@@ -1,0 +1,22 @@
+
+
+
+#Main {
+    width: 60%;
+    height: 100%;
+    background-color: #120114;
+    color: white;
+}
+
+#Banner {
+    width: 20%;
+    background-color: #120114;
+    height: 100%;
+}
+
+.filters {
+    display: flex;
+    font-size: 200%;
+    padding: 20px;
+    justify-content: space-around;
+}

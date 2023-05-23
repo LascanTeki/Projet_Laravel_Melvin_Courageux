@@ -1,0 +1,16 @@
+.error{
+    height: calc(100% - 120px);
+    width: 100%;
+    display: flex;
+    font-size: 400%;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    justify-content: center;
+
+}
+
+.error a{
+    padding-top: 25px;
+    font-size: 50%; 
+}
