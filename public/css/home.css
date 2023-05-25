@@ -8,15 +8,83 @@
     color: white;
 }
 
-#Banner {
-    width: 20%;
-    background-color: #120114;
-    height: 100%;
-}
+
 
 .filters {
     display: flex;
     font-size: 200%;
     padding: 20px;
     justify-content: space-around;
+    color: white;
+}
+
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 90%;
+    justify-content: space-around;
+}
+
+.categories a{
+    width: 30%;
+    
+    height: 20%;
+}
+
+.categories a:hover{
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+
+}
+
+.category{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 150%;
+    background-image: url(../img/drink.jpg) ;
+    font-weight: bold;
+    position: relative;
+    color: #120114;
+}
+
+
+#Banner {
+    width: 20%;
+    background-color: #120114;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.drinks{
+    position: relative;
+    width: 90%;
+    height: 26%;
+}
+
+.drink{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.5;
+    object-fit: cover;
 }

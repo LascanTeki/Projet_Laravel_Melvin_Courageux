@@ -1,0 +1,50 @@
+#Main {
+    width: 90%;
+    height: 90%;
+    background-color: #120114;
+    color: white;
+    position: relative;
+    margin-top: 2%;
+}
+
+.title {
+    display: flex;
+    font-size: 300%;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.image{
+    width: 25%;
+    padding: 1%;
+    object-fit: contain;
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+.desc {
+    display: flex;
+    position:absolute;
+    top: 0;
+    justify-content: space-between;
+    width: 98%;
+    margin-left: 2%;
+}
+
+.text {
+    margin-top: 96px;
+    width: 60%;
+}
+
+.section{
+    font-size: 150%;
+    margin-top: 3%;
+}
+
+.alcohol{
+    width: 5%;
+    bottom: 0;
+    padding: 2%;
+    position: absolute;
+}

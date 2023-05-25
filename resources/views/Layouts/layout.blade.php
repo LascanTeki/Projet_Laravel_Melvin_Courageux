@@ -1,3 +1,16 @@
+
+<?php
+
+if (request('search')) {
+        ＄users = User::where('name', 'like', '%' . request('search') . '%')->get();
+    } else {
+        ＄users = User::all();
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -20,6 +33,9 @@
 <body class="antialiased">
     <header>
         <a href="/"><img src="{{ asset('img/logo.png') }}" alt='Logo' class="logo"/></a>
+        <form method="post" action="{{ action('WelcomeController@log_in') }}">
+            <input type="search" class="search" placeholder="Search..." name="search">
+        </form>
         <div class="login">
             <a href="/login">Login</a>
             <a href="/signup">Signup</a>
@@ -28,7 +44,6 @@
 
     @yield('content')
 
-    <footer></footer>
 </body>
 
 </html>

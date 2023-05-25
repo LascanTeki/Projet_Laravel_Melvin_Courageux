@@ -29,19 +29,6 @@ header {
     margin-top: 20px;
 }
 
-#Banner {
-    width: 20%;
-    background-color: #120114;
-    height: 100%;
-}
-
-.filters {
-    display: flex;
-    font-size: 200%;
-    padding: 20px;
-    justify-content: space-around;
-}
-
 a {
     text-decoration: none;
     color: white;
@@ -57,4 +44,20 @@ a:hover{
     align-items: center;
     width: 115px;
     justify-content: space-between;
+}
+
+.search{
+    background-color: #110113; 
+    color: white;
+    height: 35px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+
+}
+
+form{
+    width: 50%;
+    margin-top: 25px;
 }
