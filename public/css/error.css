@@ -7,10 +7,12 @@
     text-align: center;
     color: white;
     justify-content: center;
-
+    align-items: center;
 }
 
 .error a{
     padding-top: 25px;
     font-size: 50%; 
+    height: fit-content;
+    width: fit-content;
 }

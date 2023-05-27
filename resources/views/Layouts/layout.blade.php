@@ -1,12 +1,12 @@
 
 <?php
 
-if (request('search')) {
+/*if (request('search')) {
         ＄users = User::where('name', 'like', '%' . request('search') . '%')->get();
     } else {
         ＄users = User::all();
     }
-
+*/
 ?>
 
 
@@ -33,7 +33,7 @@ if (request('search')) {
 <body class="antialiased">
     <header>
         <a href="/"><img src="{{ asset('img/logo.png') }}" alt='Logo' class="logo"/></a>
-        <form method="post" action="{{ action('WelcomeController@log_in') }}">
+        <form method="post" action="">
             <input type="search" class="search" placeholder="Search..." name="search">
         </form>
         <div class="login">

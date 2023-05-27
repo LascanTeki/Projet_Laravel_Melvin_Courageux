@@ -23,3 +23,6 @@ Route::get('/recovery', [PostController::class, 'recovery']);
 Route::get('/*', [PostController::class, 'error']);
 
 Route::post('/list', [PostController::class, 'search']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

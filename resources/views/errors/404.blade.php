@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('style')
 <link rel="stylesheet" href="{{ URL::asset('css/error.css') }}">

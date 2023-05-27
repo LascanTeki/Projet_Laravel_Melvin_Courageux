@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-header {
+.header {
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -32,9 +32,10 @@ header {
 a {
     text-decoration: none;
     color: white;
+    height: 100%;
 }
 
-a:hover{
+a:hover {
     cursor: pointer;
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
 }
@@ -44,10 +45,17 @@ a:hover{
     align-items: center;
     width: 115px;
     justify-content: space-between;
+    font-size: 120%;
 }
 
-.search{
-    background-color: #110113; 
+.dropdown {
+    color: white;
+    font-size: 120%;
+    padding-top: 15px;
+}
+
+.search {
+    background-color: #110113;
     color: white;
     height: 35px;
     width: 100%;
@@ -57,7 +65,14 @@ a:hover{
 
 }
 
-form{
+form {
     width: 50%;
     margin-top: 25px;
+}
+
+
+.navbar-collapse {
+
+    flex-grow: inherit;
+
 }
