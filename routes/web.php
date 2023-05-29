@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,11 @@ Route::get('/login', [PostController::class, 'login']);
 Route::get('/signup', [PostController::class, 'signup']);
 Route::get('/recovery', [PostController::class, 'recovery']);
 Route::get('/*', [PostController::class, 'error']);
+Route::get('/like', [PostController::class, 'like']);
 
 Route::post('/list', [PostController::class, 'search']);
 Auth::routes();
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PhpOption\None;
+use App\Models\likes;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -27,6 +29,10 @@ class PostController extends Controller
     public function drink()
     {
 
+        $user_id = auth()->user()->id;
+
+        //gets drink infos
+
         $drinkQ = request('drink');
 
         if ($drinkQ == "") {
@@ -37,8 +43,20 @@ class PostController extends Controller
 
         $drink = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' . $drinkQ);
         $drink = json_decode($drink, true);
+        $drinkid = $drink['drinks'][0]['idDrink'];
 
-        return view('Drink', ['drink' => $drink['drinks'][0]]);
+        //checks if the user already liked the drink
+
+        $iflike = likes::where('user_id', $user_id)->where('drink_id', $drinkid)->get();
+
+        if ($iflike->isEmpty()) {
+            $iflike = false;
+       }
+        else {
+            $iflike = true;
+        }
+
+        return view('Drink', ['drink' => $drink['drinks'][0], 'heart' => $iflike] );
     }
     public function list()
     {
@@ -65,4 +83,32 @@ class PostController extends Controller
     {
         $data = request('search');
     }
+
+    public function like(Request $request)
+    {
+        $user_id = auth()->user()->id;
+        $drink = isset($_REQUEST['myData'])?$_REQUEST['myData']:"";
+
+        $iflike = likes::where('user_id', $user_id)->where('drink_id', $drink)->get();
+
+        if ($iflike->isEmpty()) {
+            $like = new likes();
+
+            $like->user_id = $user_id;
+            $like->drink_id = $drink;
+            $like->Like= true;
+            
+            $like->save();
+            return("no");
+    
+       }
+        else {
+            likes::where('user_id', $user_id)->where('drink_id', $drink)->delete();
+            return($iflike);
+        }
+
+        
+
+    }
+    
 }

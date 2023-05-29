@@ -49,3 +49,13 @@
     position: absolute;
     box-sizing: content-box;
 }
+
+.btn{
+    height: 15px;
+    font-family: 'Font Awesome 6 Free';
+    position: absolute;
+    bottom: 60px;
+    right: 15px;
+    font-size: 35px;
+    color: #a09797;
+}
