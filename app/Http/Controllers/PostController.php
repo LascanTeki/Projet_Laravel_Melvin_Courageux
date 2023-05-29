@@ -23,13 +23,13 @@ class PostController extends Controller
             $randoms[$i]['strDrink'] = $random['strDrink'];
             $randoms[$i]['strDrinkThumb'] = $random['strDrinkThumb'];
         }
-        
+
         return view('Homepage', ['categories' => $categories, 'randoms' => $randoms]);
     }
     public function drink()
     {
 
-        $user_id = auth()->user()->id;
+        $user_id = auth()->user();
 
         //gets drink infos
 
@@ -47,16 +47,21 @@ class PostController extends Controller
 
         //checks if the user already liked the drink
 
-        $iflike = likes::where('user_id', $user_id)->where('drink_id', $drinkid)->get();
-
-        if ($iflike->isEmpty()) {
+        if ($user_id == null) {
             $iflike = false;
-       }
-        else {
-            $iflike = true;
+        } else {
+            $user_id = auth()->user()->id;
+            $iflike = likes::where('user_id', $user_id)->where('drink_id', $drinkid)->get();
+
+            if ($iflike->isEmpty()) {
+                $iflike = "nope";
+            } else {
+                $iflike = true;
+            }
         }
 
-        return view('Drink', ['drink' => $drink['drinks'][0], 'heart' => $iflike] );
+
+        return view('Drink', ['drink' => $drink['drinks'][0], 'heart' => $iflike]);
     }
     public function list()
     {
@@ -87,7 +92,7 @@ class PostController extends Controller
     public function like(Request $request)
     {
         $user_id = auth()->user()->id;
-        $drink = isset($_REQUEST['myData'])?$_REQUEST['myData']:"";
+        $drink = isset($_REQUEST['myData']) ? $_REQUEST['myData'] : "";
 
         $iflike = likes::where('user_id', $user_id)->where('drink_id', $drink)->get();
 
@@ -96,19 +101,13 @@ class PostController extends Controller
 
             $like->user_id = $user_id;
             $like->drink_id = $drink;
-            $like->Like= true;
-            
+            $like->Like = true;
+
             $like->save();
-            return("no");
-    
-       }
-        else {
+            return ("no");
+        } else {
             likes::where('user_id', $user_id)->where('drink_id', $drink)->delete();
-            return($iflike);
+            return ($iflike);
         }
-
-        
-
     }
-    
 }

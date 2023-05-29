@@ -90,6 +90,10 @@
             if (heart == true) {
                 document.getElementById("heart").className = "fas fa-heart"
             }
+            else if (heart == false) {
+                document.getElementById("heart").className = "hidden"
+            } 
+            
         </script>
 
     </div>
