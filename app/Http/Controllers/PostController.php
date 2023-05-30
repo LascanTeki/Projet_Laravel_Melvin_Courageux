@@ -24,7 +24,7 @@ class PostController extends Controller
             $randoms[$i]['strDrinkThumb'] = $random['strDrinkThumb'];
         }
 
-        return view('Homepage', ['categories' => $categories, 'randoms' => $randoms]);
+        return view('homepage', ['categories' => $categories, 'randoms' => $randoms]);
     }
     public function drink()
     {
@@ -61,12 +61,43 @@ class PostController extends Controller
         }
 
 
-        return view('Drink', ['drink' => $drink['drinks'][0], 'heart' => $iflike]);
+        return view('drink', ['drink' => $drink['drinks'][0], 'heart' => $iflike]);
     }
     public function list()
     {
-        return view('List');
+        return view('list');
     }
+
+    public function fav()
+    {
+        $user_id = auth()->user();
+
+
+        if ($user_id == null) {
+
+            return redirect('/error');
+
+        } else {
+
+            $user_id = auth()->user()->id;
+            $likes = likes::where('user_id', $user_id)->get();
+            $i = 0;
+            $drinks= null;
+
+            foreach ($likes as $like) {
+
+                $id = $like['drink_id'];
+                $drink = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' . $id);
+                $drink = json_decode($drink, true);
+                $drink = $drink['drinks'][0];
+                $drinks[$i]=$drink;
+                $i++;
+            } 
+
+            return view('fav', ['likes' => $drinks]);
+        }
+    }
+
     public function login()
     {
         return view('auth.login');

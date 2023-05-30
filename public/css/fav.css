@@ -1,0 +1,56 @@
+#Main {
+    width: 90%;
+    height: 90%;
+    background-color: #120114;
+    color: white;
+    position: relative;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overflow-y:auto;
+    overflow-x: hidden;
+    padding-top: 55px;
+}
+
+.drinks{
+    display: block;
+    position: relative;
+    width: 27%;
+    height: 175px;
+    margin-bottom: 35px;
+}
+
+.drink{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.5;
+    object-fit: cover;
+}
+
+.title{
+    position: absolute;
+    top: 0;
+    font-size: 35px;
+}
+
+.none{
+    font-size: 45px;
+    padding-bottom: 55px;
+    opacity: 0.2;
+}
