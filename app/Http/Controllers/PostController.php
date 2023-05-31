@@ -63,10 +63,6 @@ class PostController extends Controller
 
         return view('drink', ['drink' => $drink['drinks'][0], 'heart' => $iflike]);
     }
-    public function list()
-    {
-        return view('list');
-    }
 
     public function fav()
     {
@@ -113,11 +109,6 @@ class PostController extends Controller
     public function error()
     {
         return view('Error');
-    }
-
-    public function search()
-    {
-        $data = request('search');
     }
 
     public function like(Request $request)

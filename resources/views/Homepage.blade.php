@@ -6,13 +6,16 @@
 @endsection
 
 @section('content')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <div class="content">
         <div id="Main">
             <div class="filters">Welcome to LaraDrink</div>
 
             <div class="categories">
                 @foreach ($categories as $category)
-                    <a href="/list?cat={{ $category['strCategory'] }}">
+                    <a href="/search?cat={{ $category['strCategory'] }}">
                         <div class="category">{{ $category['strCategory'] }}</div>
                     </a>
                 @endforeach

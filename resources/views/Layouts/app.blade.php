@@ -30,9 +30,11 @@
         <a class="logo" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}" alt='Logo' class="logo" />
         </a>
-        <form method="post" action="">
-            <input type="search" class="search" placeholder="Search..." name="search">
+        <!-- Searchbar -->
+        <form action="/search" method="GET">
+            <input type="search" class="search" placeholder="Search..." name="search" required>
         </form>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav login">
                 <!-- Authentication Links -->

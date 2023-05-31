@@ -44,7 +44,7 @@ a:hover {
 .login {
     display: flex;
     align-items: center;
-    width: 115px;
+    width: 145px;
     justify-content: space-between;
     font-size: 120%;
 }
