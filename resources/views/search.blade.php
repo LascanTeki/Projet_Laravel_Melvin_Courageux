@@ -25,9 +25,12 @@
                         query: query,
                         category: category
                     },
+
+                    //On successfull category change, takes the newly generated results and makes it replace the current ones without reload
                     success: function(response) {
                         $('#Main').html(response);
                     },
+                    
                     error: function(xhr) {
                         console.log(xhr.responseText);
                     }

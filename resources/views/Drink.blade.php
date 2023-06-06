@@ -10,34 +10,37 @@
 
 
 @section('content')
-    <?php use App\Http\Controllers\PostController;
-    ?>
 
+    <?php use App\Http\Controllers\PostController;?>
 
+    <!-- Imports Jquerry  -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+
     <script>
         var base_url = '{{ URL::to('/') }}';
     </script>
 
     <script type="text/javascript">
+
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-
         $(document).on("click", '.btn', function(e) {
             e.preventDefault();
             var drink = document.getElementById('button').value;
-            console.log(drink)
-
             $.ajax({
                 type: 'get',
                 data: {
                     "myData": drink
                 },
                 url: "like",
+
+                //In case of successfull like, switches the heart's state
                 success: function(response) {
                     if (document.getElementById("heart").className == "far fa-heart") {
                         document.getElementById("heart").className = "fas fa-heart"
@@ -86,6 +89,8 @@
         <script>
     
             const heart="<?php echo $heart; ?>";
+
+            //changes the heart's state depending on if the heart has already been liked in the past
     
             if (heart == true) {
                 document.getElementById("heart").className = "fas fa-heart"

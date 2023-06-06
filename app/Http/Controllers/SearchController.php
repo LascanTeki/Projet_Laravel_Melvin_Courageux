@@ -21,13 +21,13 @@ class SearchController extends Controller
 
         $results = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' . $query);
 
-        //If a category in the homepage is clicked
+        // Results if a category in the homepage is clicked
         if (request('cat') && !($request->ajax())) {
             $cat = request('cat');
             $cat = str_replace(' ', '_', $cat);
             $results = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=' . $cat);
 
-        //if there isn't any search but stil a filter
+        // Results if there isn't any search but stil a filter
         } elseif ($request->ajax() && $query == "") {
             $category = str_replace(' ', '_', $category);
             $results = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=' . $category);
@@ -48,6 +48,7 @@ class SearchController extends Controller
 
         if ($request->ajax()) {
 
+            //Generates new search results to replace the current ones
             return view('search_results', ['likes' => $results, 'categories' => $categories, 'query' => $query]);
         }
 

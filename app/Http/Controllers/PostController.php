@@ -16,6 +16,7 @@ class PostController extends Controller
         $categories = json_decode($categories, true);
         $categories = $categories['drinks'];
 
+        //Gets 3 random drinks for the banner
         for ($i = 0; $i < 3; $i++) {
             $random = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/random.php');
             $random = json_decode($random, true);
@@ -31,10 +32,10 @@ class PostController extends Controller
 
         $user_id = auth()->user();
 
-        //gets drink infos
-
+        //Gets drink infos
         $drinkQ = request('drink');
 
+        //redirects in case of trying to access non existing drink
         if ($drinkQ == "") {
             return redirect('/error');
         }
@@ -45,8 +46,7 @@ class PostController extends Controller
         $drink = json_decode($drink, true);
         $drinkid = $drink['drinks'][0]['idDrink'];
 
-        //checks if the user already liked the drink
-
+        //Checks if the user already liked the drink
         if ($user_id == null) {
             $iflike = false;
         } else {
@@ -68,17 +68,15 @@ class PostController extends Controller
     {
         $user_id = auth()->user();
 
-
+        //Redirects in case of trying to access without login
         if ($user_id == null) {
-
             return redirect('/error');
-
         } else {
 
             $user_id = auth()->user()->id;
             $likes = likes::where('user_id', $user_id)->get();
             $i = 0;
-            $drinks= null;
+            $drinks = null;
 
             foreach ($likes as $like) {
 
@@ -86,9 +84,9 @@ class PostController extends Controller
                 $drink = file_get_contents('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' . $id);
                 $drink = json_decode($drink, true);
                 $drink = $drink['drinks'][0];
-                $drinks[$i]=$drink;
+                $drinks[$i] = $drink;
                 $i++;
-            } 
+            }
 
             return view('fav', ['likes' => $drinks]);
         }
@@ -111,13 +109,17 @@ class PostController extends Controller
         return view('Error');
     }
 
-    public function like(Request $request)
+    public function like()
     {
+
+        //This function is called if a drink is liked in drink.blade.php
+
         $user_id = auth()->user()->id;
         $drink = isset($_REQUEST['myData']) ? $_REQUEST['myData'] : "";
 
         $iflike = likes::where('user_id', $user_id)->where('drink_id', $drink)->get();
 
+        //If no like corresponds to the drink about to be liked, creates a like
         if ($iflike->isEmpty()) {
             $like = new likes();
 
@@ -127,7 +129,10 @@ class PostController extends Controller
 
             $like->save();
             return ("no");
-        } else {
+        }
+
+        //else, deletes the existing like
+        else {
             likes::where('user_id', $user_id)->where('drink_id', $drink)->delete();
             return ($iflike);
         }
