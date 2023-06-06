@@ -12,7 +12,6 @@ class SearchController extends Controller
 
         if ($request->ajax()) {
             $query = $request->input('query');
-            print_r($query);
         } else {
             $query = request('search');
         }
